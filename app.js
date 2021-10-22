@@ -39,6 +39,7 @@ function addTask(event) {
     //add list item to ul
     const ul = document.querySelector('.collection');
     ul.appendChild(li);
+    taskInput.value = '';
 
     console.log(ul);
     event.preventDefault();
