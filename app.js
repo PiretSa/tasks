@@ -7,7 +7,7 @@ form.addEventListener('submit', addTask);
 taskList.addEventListener('click', deleteTask);
 
 function deleteTask(event){
-    if(event.target.textContent == 'X'){
+    if(event.target.textContent === 'X'){
         if(confirm('Do you want to delete this task?')) {
             event.target.parentElement.remove();
         }
