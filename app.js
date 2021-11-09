@@ -7,6 +7,39 @@ const deleteTasksBtn = document.querySelector('#delete-tasks');
 form.addEventListener('submit', addTask);
 taskList.addEventListener('click', deleteTask);
 deleteTasksBtn.addEventListener('click', deleteTasks);
+document.addEventListener('DOMContentLoaded', getTasksFromLocalStorage);
+
+function getTasksFromLocalStorage() {
+    let tasks;
+    if (localStorage.getItem('tasks') === null){
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+    tasks.forEach(function (tasksElement) {
+        //create <li> element
+        const li = document.createElement('li');
+        //add css class
+        li.className = 'collection-item';
+        //create text element
+        const text = document.createTextNode(tasksElement);
+        //add text to list item
+        li.appendChild(text);
+        //create <a> element
+        const link = document.createElement('a');
+        //add css class
+        link.className = 'secondary-content';
+        //set href atribute to <a>
+        link.setAttribute('href', '#');
+        //add text content to link
+        link.appendChild(document.createTextNode('X'));
+        //add <a> to <li>
+        li.appendChild(link);
+        //add list item to ul
+        const ul = document.querySelector('.collection');
+        ul.appendChild(li);
+    });
+}
 
 function deleteTasks(event){
     //event.target.previousElementSibling.innerHTML = '';
